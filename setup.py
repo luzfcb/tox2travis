@@ -26,7 +26,7 @@ setup(
     name='tox2travis',
     version='0.1.0',
     license='BSD',
-    description="Read tox.ini and generate 'matriz' section of .travis.yml",
+    description="Read tox.ini and generate 'matrix' section of .travis.yml",
     long_description='%s\n%s' % (
         re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).sub('', read('README.rst')),
         re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))
@@ -73,8 +73,6 @@ setup(
         #   ':python_version=="2.6"': ['argparse'],
     },
     entry_points={
-        'console_scripts': [
-            'tox2travis = tox2travis.cli:main',
-        ]
+        'tox': ['tox2travis = tox2travis']
     },
 )

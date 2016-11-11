@@ -10,27 +10,30 @@ if __name__ == '__main__':
                                        help='additional help')
 
     # The first subparser 'Create'
-    parser_create = subparsers.add_parser('create')
+    parser_toci = subparsers.add_parser('toci')
     # Store the result in which for a conditional check later
-    parser_create.set_defaults(which='create')
+    parser_toci.set_defaults(which='toci')
 
     # Add the first arg to create (First Name)
-    parser_create.add_argument(
-        '--first_name',
-        required=True,
-        help='First Name')
+    parser_toci.add_argument(
+        '--travis',
+        required=False,
+        action='store_true',
+        help='Generate test matrix for Travis')
 
     # Add the second arg to create (Last Name)
-    parser_create.add_argument(
-        '--last_name',
-        required=True,
-        help='Last Name')
+    parser_toci.add_argument(
+        '--gitlab',
+        required=False,
+        action='store_true',
+        help='Generate test matrix for Gitlab')
 
-    # The Second subparser 'Delete'
-    parser_delete = subparsers.add_parser('delete')
-    parser_delete.set_defaults(which='delete')
+    subparsers_of_toci = parser_toci.add_subparsers(title='subcommands',
+                                            description='valid subcommands',
+                                            help='additional help')
 
-    parser_delete.add_argument(
-        'id', help='Database ID')
+    parser_toci_qqqq = subparsers_of_toci.add_parser('tociaaa')
+
+    parser_toci_qqqq.set_defaults(which='tociaaa')
 
     args = parser.parse_args()
